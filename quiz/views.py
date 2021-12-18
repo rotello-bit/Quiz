@@ -16,8 +16,8 @@ def get_quizzes(request):
 
 
 def get_question(request, quiz_id, question_no):
-    question = Question.objects.filter(quiz_id=quiz_id, no=question_no).values('id', 'name')
-    options = Option.objects.filter(question_id=question.id).valuse('id', 'name')
+    question = Question.objects.get(quiz_id=quiz_id, no=question_no)
+    options = Option.objects.filter(question_id=question.id).values('id', 'name')
     context = {
         "question": question,
         "options": options

@@ -19,5 +19,6 @@ from quiz.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('<str:pk>/', home, name='home')
+    path('get_quizzes/', get_quizzes, name='get_quizzes'),
+    path('get_question/<int:quiz_id>/<int:question_no>', get_question, name='get_question'),
 ]
