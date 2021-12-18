@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+  <!-- QUIZ ONE -->
+  <div class="question-template">
+      <main>
+            {% for i in questions %}
+          <div class="text-container">
+              <h3>{{ i.question}}</h3>
+          </div>
+          <form>
+
+              <div class="quiz-options">
+                  <input type="radio" class="input-radio one-a jshdgdgwgdwfdfwdwjfdjwwdwdco" id="one-a" name="yes-1" required>
+                  <label class="radio-label jsjwjdwjdwjdwco" for="one-a">
+                      <span class="alphabet">A</span> {{ i.option1}} <img class="icon jdsjkefkefkefefexco" src="https://res.cloudinary.com/dvhndpbun/image/upload/v1588518387/jdsjkefkefkefefexco.svg" alt="">
+                  </label>
+                  <input type="radio" class="input-radio one-a jshdgdgwgdwfdfwdwjfdjwwdwdco" id="one-a" name="yes-1" required>
+                  <label class="radio-label jsjwjdwjdwjdwco" for="one-a">
+                      <span class="alphabet">A</span> {{ i.option2}} <img class="icon jdsjkefkefkefefexco" src="https://res.cloudinary.com/dvhndpbun/image/upload/v1588518387/jdsjkefkefkefefexco.svg" alt="">
+                  </label>
+                  <input type="radio" class="input-radio one-b jshdgdgwgdwfdfwdwjfdjwwdwdin" id="one-b" name="yes-1">
+                  <label class="radio-label jsjwjdwjdwjdwin" for="one-b">
+                      <span class="alphabet">B</span> {{ i.option3}} <img class="icon jfdedgwfzexf4hjin" src="https://res.cloudinary.com/dvhndpbun/image/upload/v1588517753/jfdedgwfzexf4hjin.svg">
+                  </label>
+                  <input type="radio" class="input-radio one-c jshdgdgwgdwfdfwdwjfdjwwdwdin" id="one-c" name="yes-1">
+                  <label class="radio-label jsjwjdwjdwjdwin" for="one-c">
+                      <span class="alphabet">C</span> {{ i.option4}}<img class="icon jfdedgwfzexf4hjin" src="https://res.cloudinary.com/dvhndpbun/image/upload/v1588517753/jfdedgwfzexf4hjin.svg">
+                  </label>
+              </div>
+              <div class="buttons">
+
+                  <a id="btn" type="submit" onclick="window.location.href={{ i.get_previous_in_order }}">Before</a>
+              <a id="btn" type="submit" href="http://127.0.0.1:8000/{{i.id}}">Next</a>
+              </div>
+
+          </form>
+          {% endfor %}
+      </main>
+  </div>
+  <!-- QUIZ TWO -->
+
+</body>
+</html>
