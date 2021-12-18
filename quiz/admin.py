@@ -4,8 +4,11 @@ from quiz.models import *
 
 class PostAdmin(admin.ModelAdmin):
     class Meta:
-        model = QuestionModel
+        model = Quiz
 
 
-admin.site.register(QuestionModel, PostAdmin)
+admin.site.register(Quiz, PostAdmin)
+admin.site.register(Question, PostAdmin)
+admin.site.register(Option, PostAdmin)
+admin.site.register(Answer, PostAdmin)
 # Register your models here.
