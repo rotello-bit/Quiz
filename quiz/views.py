@@ -51,6 +51,6 @@ def submit_quiz(request):
         'question_count': question_count,
         "correct_answer_count": correct_answer_count,
         "wrong_answer_count": question_count - correct_answer_count,
-        "success_rate": 100*correct_answer_count/question_count
+        "success_rate": int(100*correct_answer_count/question_count)
     }
     return HttpResponse(t.render(c, request), content_type='text/html')
