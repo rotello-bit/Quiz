@@ -1,23 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-</head>
-<body>
-  <!-- QUIZ ONE -->
-  <div class="question-template">
-      <main>
-            {% for i in quizzes %}
-          <form>
-              <a id="btn" type="submit">{{ i.name }}</a>
-          </form>
-          {% endfor %}
-      </main>
-  </div>
-  <!-- QUIZ TWO -->
+<main>
+    {% for quiz in quizzes %}
+        <form>
+            <a id="btn" type="submit" onclick="get_question({{ quiz.id }}, 1)">{{ quiz.name }}</a>
+        </form>
+    {% endfor %}
+</main>
 
-</body>
-</html>

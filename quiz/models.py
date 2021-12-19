@@ -23,6 +23,7 @@ class Question(models.Model):
 
 class Option(models.Model):
     question = models.ForeignKey(Question, db_column='question_id', on_delete=models.CASCADE)
+    no = models.CharField(max_length=5)
     name = models.CharField(max_length=250, null=True)
 
     def __str__(self):

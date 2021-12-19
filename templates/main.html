@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="question-template">
+
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.cokie.min.js' %}" type="text/javascript"></script>
+<script>
+    jQuery(document).ready(function () {
+        removeCookies();
+        get_quizzes();
+    });
+
+    function removeCookies() {
+        $.each($.cookie(), function (name, value) {
+            if (/^question_/.test(name)) {
+                $.removeCookie(name);
+            }
+        });
+    }
+
+    function get_results() {
+        var result = {};
+        $.each($.cookie(), function (name, value) {
+            if (/^question_/.test(name)) {
+                result[name] = $.cookie(name);
+            }
+        });
+
+        console.log(result);
+        return JSON.stringify(result);
+    }
+
+
+    function get_quizzes() {
+        $.ajax({
+            type: 'GET',
+            url: 'get_quizzes/',
+            data: {},
+            success: function (data) {
+                $('.question-template').html(data);
+            },
+            complete: function () {
+
+            },
+            error: function (xhr, status, e) {
+            }
+        });
+    }
+
+    function get_question(quiz_id, question_no) {
+        $.ajax({
+            type: 'GET',
+            url: 'get_question/' + quiz_id + '/' + question_no,
+            data: {},
+            success: function (data) {
+                $('.question-template').html(data);
+                if ($.cookie("question_" + question_no) !== 'undefined') {
+                    $("#" + $.cookie("question_" + question_no)).prop("checked", true);
+                }
+            },
+            complete: function () {
+                var radioButtons = $("input[name='option']");
+                for (var i = 0; i < radioButtons.length; i++) {
+                    radioButtons[i].addEventListener('change', function () {
+                        var selected = $("input[name='option']").filter(":checked");
+                        if (typeof selected[0] !== 'undefined') {
+                            $.cookie("question_" + question_no, selected[0].id);
+                        }
+                    });
+                }
+            },
+            error: function (xhr, status, e) {
+            }
+        });
+    }
+
+    function submit_quiz(quiz_id) {
+        $.ajax({
+            type: 'POST',
+            url: 'submit_quiz/',
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                quiz_id: quiz_id,
+                result: get_results()
+            },
+            success: function (data) {
+                $('.question-template').html(data);
+            },
+            complete: function () {
+
+            },
+            error: function (xhr, status, e) {
+            }
+        });
+    }
+</script>
+</body>
+</html>
+

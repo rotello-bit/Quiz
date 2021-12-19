@@ -1,0 +1,27 @@
+<main>
+    <div class="text-container">
+        <h3>{{ question.name }}</h3>
+    </div>
+    <form>
+        <div class="quiz-options">
+            {% for option in options %}
+                <input type="radio" class="input-radio one-a jshdgdgwgdwfdfwdwjfdjwwdwdco" id="{{ option.id }}" name="option" required>
+                <label class="radio-label " for="{{ option.id }}">
+                    <span class="alphabet">{{ option.no }}</span> {{ option.name }}
+                </label>
+            {% endfor %}
+        </div>
+        <div class="buttons">
+            {% if not is_first %}
+                <a id="btn" type="submit" onclick="get_question({{ question.quiz_id }}, {{ question.no|add:"-1" }})">Before</a>
+            {% endif %}
+
+            {% if is_last %}
+                <a id="btn" type="submit" onclick="submit_quiz({{ question.quiz_id }})">Submit</a>
+            {% else %}
+                <a id="btn" type="submit" onclick="get_question({{ question.quiz_id }}, {{ question.no|add:1 }})">Next</a>
+            {% endif %}
+
+        </div>
+    </form>
+</main>
