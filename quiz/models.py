@@ -15,7 +15,7 @@ class Question(models.Model):
     name = models.CharField(max_length=250, null=True)
 
     class Meta:
-        unique_together = ('id', 'no',)
+        unique_together = ('quiz_id', 'no',)
 
     def __str__(self):
         return self.name

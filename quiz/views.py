@@ -14,18 +14,19 @@ def get_quizzes(request):
     c = {
         'quizzes': Quiz.objects.all().values('id', 'name')
     }
+
     return HttpResponse(t.render(c, request), content_type='text/html')
 
 
 def get_question(request, quiz_id, question_no):
-    question = Question.objects.filter(quiz_id=quiz_id, no=question_no).order_by('no').values('id', 'name', 'quiz_id', 'no')
-    options = Option.objects.filter(question_id=question[0]["id"]).values('id', 'name', 'no')
-    first = Question.objects.all().order_by('no').first()
-    last = Question.objects.all().order_by('no').last()
+    questions = Question.objects.filter(quiz_id=quiz_id, no=question_no).values('id', 'name', 'quiz_id', 'no')
+    options = Option.objects.filter(question_id=questions[0]["id"]).values('id', 'name', 'no')
+    first = Question.objects.filter(quiz_id=quiz_id).order_by('no').first()
+    last = Question.objects.filter(quiz_id=quiz_id).order_by('no').last()
 
     t = loader.get_template('question.html')
     c = {
-        "question": question[0],
+        "question": questions[0],
         "options": options,
         "is_first": first.no == question_no,
         "is_last": last.no == question_no,

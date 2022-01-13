@@ -46,8 +46,8 @@
             type: 'GET',
             url: 'get_quizzes/',
             data: {},
-            success: function (data) {
-                $('.question-template').html(data);
+            success: function (html) {
+                $('.question-template').html(html);
             },
             complete: function () {
 

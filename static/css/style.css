@@ -62,8 +62,6 @@ main {
     max-width: 1000px;
     margin: auto auto;
     align-items: stretch;
-
-
 }
 
 .text-container {
@@ -85,7 +83,7 @@ label {
     display: flex;
     align-items: center;
     border-radius: 5px;
-    background: rgba(255, 5, 5, 0.72);
+    background: rgba(241, 237, 237, 0.72);
     margin-bottom: 15px;
     padding: 6px 0;
     position: relative;
@@ -116,31 +114,22 @@ label .icon {
     top: 12px;
 }
 
-label .jfdedgwfzexf4hjin {
-    width: 18px;
+.ticked:checked + label {
+    background: linear-gradient(to right, #0092db 10%, #ffffff 80%);
 }
 
-label .jdsjkefkefkefefexco {
-    width: 22px;
-}
-
-.jshdgdgwgdwfdfwdwjfdjwwdwdco:checked + label {
-    background: rgb(30, 131, 18);
-    -webkit-text-stroke: .6px #fff;
-}
-
-.jshdgdgwgdwfdfwdwjfdjwwdwdco:checked + label .alphabet {
+.ticked:checked + label .alphabet {
     background: #000000;
     color: #FFF;
 }
 
-.jshdgdgwgdwfdfwdwjfdjwwdwdin:checked + label {
+.ticked:checked + label {
     font-weight: bold;
     text-transform: uppercase;
     -webkit-text-stroke: .6px #fff;
 }
 
-.jshdgdgwgdwfdfwdwjfdjwwdwdin:checked + label .alphabet {
+.ticked:checked + label .alphabet {
     background: #000;
     color: #fff;
 }
@@ -202,63 +191,12 @@ input:valid + label {
     color: #fff;
 }
 
-.score-counter {
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    width: 210px;
-    height: 9%;
-    background: rgba(0, 0, 0, 0.749);
-    border: 4px solid #000;
-    position: fixed;
-    top: 5px;
-    right: 10px;
-    box-shadow: inset 2px -2px 9px #020202, inset -2px 2px 9px #d2d2d2;
-}
-
-.score-text {
-    margin: 0 20px;
-}
-
-.score-counter::after {
-    content: counter(points) "/5";
-}
-
 .one-a:checked,
 .two-c:checked,
 .three-c:checked,
 .four-b:checked,
 .five-a:checked {
     counter-increment: points;
-}
-
-#game-over {
-    background: linear-gradient(rgb(28, 22, 49), rgba(18, 18, 25, 0.9)), repeating-linear-gradient(0, transparent, transparent 2px, black 3px, black 3px);
-    font-family: 'Bungee', cursive;
-    /* position: absolute; */
-    width: 100%;
-    height: 100vh;
-}
-
-.game-over-content {
-    display: grid;
-    justify-items: center;
-    width: 80%;
-    margin: 0 auto;
-    padding: 120px 0;
-}
-
-#game-over h1 {
-    background: url("https://res.cloudinary.com/dvhndpbun/image/upload/e_brightness:-20/v1588605696/01-01_web_designers_code_ld_img_dgytil.png");
-    -webkit-background-clip: text;
-    color: transparent;
-    background-size: contain;
-    font-size: 5rem;
-    line-height: 1.2;
-    margin: 0;
-    position: relative;
 }
 
 h1::before {
@@ -273,7 +211,6 @@ h1::before {
     mix-blend-mode: screen;
     animation: shine 1s infinite;
     background-size: 200%;
-    text-shadow: 2px 2px 10px rgba(#000, 0.2), -2px 2px 10px rgba(#000, 0.2), -2px -2px 10px rgba(#000, 0.2);
 }
 
 @keyframes pulse {
@@ -321,28 +258,6 @@ h1::before {
     margin-left: 15px;
 }
 
-#refresh {
-    color: #fff;
-    position: relative;
-    height: 100vh;
-}
-
-.refresh-content {
-    display: grid;
-    font-size: 1.2rem;
-    place-items: center;
-    width: 70%;
-    line-height: 2;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.refresh-content svg {
-    width: 50px;
-    height: auto;
-    animation: pulse 1s infinite;
-}
-
 
 /* MEDIA QUERY */
 
@@ -367,30 +282,8 @@ h1::before {
         margin: 0 .9rem 0 .7rem;
     }
 
-    .jshdgdgwgdwfdfwdwjfdjwwdwdco:checked + label {
+    .ticked:checked + label {
         -webkit-text-stroke: .1px #fff;
-    }
-
-    label .jdsjkefkefkefefexco {
-        width: 16px;
-    }
-
-    label .jfdedgwfzexf4hjin {
-        width: 14px;
-    }
-
-    #game-over h1 {
-        font-size: 3rem;
-    }
-
-    .score-counter {
-        width: 120px;
-        height: 5%;
-        font-size: .7rem;
-    }
-
-    .score-text {
-        margin: 0 20px 0 0;
     }
 
     .over-text-cont h2 {
@@ -399,15 +292,6 @@ h1::before {
 
     .over-text-cont #btn {
         padding: 3px 0;
-    }
-
-    .refresh-content {
-        width: 90%;
-    }
-
-    .refresh-content {
-        display: grid;
-        font-size: .8rem;
     }
 }
 
@@ -419,14 +303,6 @@ h1::before {
 
     label .alphabet {
         margin: 0 .55rem 0 .7rem;
-    }
-
-    label .jdsjkefkefkefefexco {
-        width: 14px;
-    }
-
-    label .jfdedgwfzexf4hjin {
-        width: 12px;
     }
 
 }

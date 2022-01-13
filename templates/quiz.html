@@ -1,8 +1,8 @@
 <main>
-    {% for quiz in quizzes %}
-        <form>
+    <form>
+        {% for quiz in quizzes %}
             <a id="btn" type="submit" onclick="get_question({{ quiz.id }}, 1)">{{ quiz.name }}</a>
-        </form>
-    {% endfor %}
+        {% endfor %}
+    </form>
 </main>
 
